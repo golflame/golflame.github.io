@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amos Bako - Professional Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter for a clean, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom styles for the Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Subtle gradient background for a professional feel - UPDATED */
+            background: linear-gradient(to bottom right, #e0f2fe, #bfdbfe); /* Light Blue to Medium Blue */
+            @apply text-gray-800 leading-relaxed tracking-wide;
+        }
+        /* Enhanced card styling */
+        .card {
+            @apply rounded-3xl shadow-2xl border border-gray-200/50 transition-all duration-300 ease-in-out;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+        }
+        .card:hover {
+            @apply shadow-3xl transform -translate-y-1; /* Slight lift on hover */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 15px 15px -8px rgba(0, 0, 0, 0.05);
+        }
+        .section-title {
+            @apply text-4xl sm:text-5xl font-extrabold text-indigo-800 mb-10 pb-5 border-b-4 border-indigo-600/80 relative;
+        }
+        .section-title::after {
+            content: '';
+            @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-2 bg-indigo-500 rounded-full; /* Decorative underline */
+        }
+        /* Styling for the placeholder for visuals */
+        .graphics-spot {
+            @apply bg-blue-50 border-2 border-dashed border-blue-400 text-blue-800 flex flex-col items-center justify-center min-h-[300px] mt-8 p-8 text-center rounded-2xl italic transition-all duration-300 hover:bg-blue-100 hover:border-blue-500;
+        }
+        .graphics-spot p {
+            @apply text-xl font-semibold mb-4;
+        }
+        .graphics-spot .placeholder-image {
+            @apply w-full max-w-md h-auto rounded-lg shadow-lg mt-4 border border-gray-200;
+        }
+        /* Sticky header padding to prevent content from hiding under it */
+        html {
+            scroll-padding-top: 6rem; /* Adjusted for slightly taller nav */
+        }
+        /* Back to top button styling */
+        #back-to-top {
+            @apply fixed bottom-10 right-10 bg-indigo-600 text-white p-5 rounded-full shadow-xl hover:bg-indigo-700 transition-all duration-300 z-50 opacity-0 invisible;
+        }
+        #back-to-top.show {
+            @apply opacity-100 visible;
+        }
+        /* Competency card hover effect */
+        .competency-card {
+            @apply transform transition-transform duration-300 hover:scale-105 hover:shadow-xl;
+        }
+        /* Hero section background pattern */
+        .hero-bg-pattern {
+            background-image: radial-gradient(circle at 100% 150%, #e0e7ff 0, #e0e7ff 12%, #edf2f7 12%, #edf2f7 16%, transparent 16%, transparent 20%, #e0e7ff 20%, #e0e7ff 24%, transparent 24%, transparent 28%, #e0e7ff 28%, #e0e7ff 32%, transparent 32%, transparent 36%, #e0e7ff 36%, #e0e7ff 40%, transparent 40%, transparent 44%, #e0e7ff 44%, #e0e7ff 48%, transparent 48%, transparent 52%, #e0e7ff 52%, #e0e7ff 56%, transparent 56%, transparent 60%, #e0e7ff 60%, #e0e7ff 64%, transparent 64%, transparent 68%, #e0e7ff 68%, #e0e7ff 72%, transparent 72%, transparent 76%, #e0e7ff 76%, #e0e7ff 80%, transparent 80%, transparent 84%, #e0e7ff 84%, #e0e7ff 88%, transparent 88%, transparent 92%, #e0e7ff 92%, #e0e7ff 96%, transparent 96%, transparent 100%);
+            background-size: 100px 100px;
+            opacity: 0.1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-white shadow-lg py-5 transition-all duration-300 ease-in-out">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 lg:px-8 max-w-4xl">
+            <a href="#top" class="text-3xl font-extrabold text-indigo-800 hover:text-indigo-900 transition duration-300 mb-4 sm:mb-0">Amos Bako</a>
+            <div class="flex flex-wrap justify-center space-x-6 text-lg">
+                <a href="#about" class="text-gray-700 hover:text-indigo-700 font-medium transition duration-300 py-2 px-3 rounded-lg hover:bg-indigo-50">About</a>
+                <a href="#competencies" class="text-gray-700 hover:text-indigo-700 font-medium transition duration-300 py-2 px-3 rounded-lg hover:bg-indigo-50">Skills</a>
+                <a href="#projects" class="text-gray-700 hover:text-indigo-700 font-medium transition duration-300 py-2 px-3 rounded-lg hover:bg-indigo-50">Projects</a>
+                <a href="#contact" class="text-gray-700 hover:text-indigo-700 font-medium transition duration-300 py-2 px-3 rounded-lg hover:bg-indigo-50">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl mt-16">
+
+
+        <!-- Hero/Header Section -->
+        <header id="top" class="text-center mb-20 p-10 bg-white card relative overflow-hidden">
+            <div class="hero-bg-pattern"></div> <!-- Subtle background pattern -->
+            <!-- Your Profile Picture -->
+            <img src="https://placehold.co/180x180/e0e7ff/4338ca?text=Your+Photo" alt="Amos Bako Profile Picture" class="rounded-full w-44 h-44 mx-auto mb-8 object-cover border-6 border-indigo-300 shadow-xl transform transition-transform duration-500 hover:scale-105">
+
+
+            <h1 class="text-6xl sm:text-8xl font-extrabold text-indigo-800 mb-8 leading-tight drop-shadow-lg">
+                Amos Bako
+            </h1>
+            <p class="text-2xl sm:text-4xl text-gray-700 mb-10 font-light italic">
+                Resourceful & Detail-Oriented Professional
+            </p>
+            <p class="text-xl text-gray-700 max-w-2xl mx-auto mb-12">
+                Driving efficiency and delivering measurable results in administrative support, operations coordination, and community engagement, leveraging modern digital and AI tools.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-5 sm:space-y-0 sm:space-x-10 text-gray-700 text-xl">
+                <span class="flex items-center text-indigo-700 font-medium">
+                    <i class="fas fa-phone-alt text-indigo-600 mr-4 text-2xl"></i>
+                    +234 708 643 4361
+                </span>
+                <span class="flex items-center text-indigo-700 font-medium">
+                    <i class="fas fa-envelope text-indigo-600 mr-4 text-2xl"></i>
+                    amosbako24@gmail.com
+                </span>
+                <a href="https://linkedin.com/in/amosbako" target="_blank" rel="noopener noreferrer" class="flex items-center text-indigo-600 hover:text-indigo-800 font-semibold transition duration-300 transform hover:scale-105">
+                    <i class="fab fa-linkedin text-indigo-600 mr-4 text-3xl"></i>
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </header>
+
+
+        <!-- About Me Section -->
+        <section id="about" class="mb-20 p-10 bg-white card">
+            <h2 class="section-title">About Me</h2>
+            <p class="text-gray-700 leading-relaxed text-lg sm:text-xl">
+                I am a resourceful and detail-oriented professional with proven experience in administrative support, operations coordination, financial management, and community engagement. My expertise lies in optimizing workflows, supporting cross-functional teams, and enhancing operational efficiency through strategic use of digital tools and AI technologies. I am committed to delivering exceptional administrative assistance, ensuring teams are organized, productive, and consistently ahead of schedule.
+            </p>
+        </section>
+
+
+        <!-- Core Competencies Section -->
+        <section id="competencies" class="mb-20 p-10 bg-white card">
+            <h2 class="section-title">Core Competencies & Approach</h2>
+            <p class="text-gray-700 leading-relaxed text-lg sm:text-xl mb-10">
+                My approach to administrative and operational support is rooted in creating structure, anticipating needs, and ensuring seamless team operations. I leverage a comprehensive skill set to drive efficiency and deliver measurable results:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-indigo-50 p-6 rounded-lg shadow-sm competency-card border border-indigo-100">
+                    <h3 class="font-semibold text-indigo-700 text-xl mb-3 flex items-center"><i class="fas fa-clipboard-list mr-3 text-indigo-500 text-2xl"></i>Administrative Support</h3>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+                        <li>Calendar & inbox management</li>
+                        <li>Scheduling & documentation</li>
+                        <li>Correspondence handling</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-lg shadow-sm competency-card border border-indigo-100">
+                    <h3 class="font-semibold text-indigo-700 text-xl mb-3 flex items-center"><i class="fas fa-chart-bar mr-3 text-indigo-500 text-2xl"></i>Data Management & Reporting</h3>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+                        <li>Excel, Google Sheets</li>
+                        <li>SPSS, basic Power BI</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-lg shadow-sm competency-card border border-indigo-100">
+                    <h3 class="font-semibold text-indigo-700 text-xl mb-3 flex items-center"><i class="fas fa-headset mr-3 text-indigo-500 text-2xl"></i>CRM & Customer Service</h3>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+                        <li>Complaint resolution</li>
+                        <li>Client follow-ups, Airtable</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-lg shadow-sm competency-card border border-indigo-100">
+                    <h3 class="font-semibold text-indigo-700 text-xl mb-3 flex items-center"><i class="fas fa-file-invoice-dollar mr-3 text-indigo-500 text-2xl"></i>Financial Administration</h3>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+                        <li>Invoicing, ledger management</li>
+                        <li>QuickBooks, Tally Prime</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-lg shadow-sm competency-card border border-indigo-100">
+                    <h3 class="font-semibold text-indigo-700 text-xl mb-3 flex items-center"><i class="fas fa-calendar-check mr-3 text-indigo-500 text-2xl"></i>Event & Project Coordination</h3>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+                        <li>Planning, logistics</li>
+                        <li>Execution of virtual & in-person programs</li>
+                    </ul>
+                </div>
+                <div class="bg-indigo-50 p-6 rounded-lg shadow-sm competency-card border border-indigo-100">
+                    <h3 class="font-semibold text-indigo-700 text-xl mb-3 flex items-center"><i class="fas fa-laptop-code mr-3 text-indigo-500 text-2xl"></i>Digital & AI Tools</h3>
+                    <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+                        <li>ChatGPT, Notion AI</li>
+                        <li>Trello, Calendly, Google Workspace</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Project Showcases Section -->
+        <section id="projects" class="mb-20 p-10 bg-white card">
+            <h2 class="section-title">Project & Achievement Showcases</h2>
+
+
+            <!-- Project 1: Large-Scale Virtual Community Management & Event Coordination -->
+            <div class="mb-16 pb-16 border-b border-gray-200/70 last:border-b-0">
+                <h3 class="text-2xl sm:text-3xl font-bold text-indigo-700 mb-5">Project 1: Large-Scale Virtual Community Management & Event Coordination</h3>
+                <p class="text-gray-600 mb-4 text-lg">**Role:** Hub Operations Coordinator / Community Manager (Internship) at ALX Nigeria in partnership with UNDP</p>
+                <p class="text-gray-700 mb-6 text-lg">**Challenge/Context:** To effectively manage communications, engagement, and event logistics for a vast and diverse community of thousands of learners across Nigeria, ensuring program continuity and high participation rates in a fast-paced virtual environment.</p>
+
+
+                <h4 class="font-semibold text-gray-800 text-xl mb-4">Actions Taken:</h4>
+                <ul class="list-disc list-inside text-gray-700 ml-6 mb-6 text-base space-y-2">
+                    <li>Developed and managed communication protocols for over 1,000 learner communities on WhatsApp and Telegram, ensuring consistent and timely information dissemination.</li>
+                    <li>Coordinated the end-to-end logistics for over 270 online events (webinars, workshops) and 150 in-person events (meetups, graduation ceremonies), utilizing tools like Calendly for scheduling and Trello for task management and tracking.</li>
+                    <li>Implemented a structured system for resolving escalated learner issues quickly and empathetically, maintaining high levels of satisfaction and minimizing disruptions.</li>
+                    <li>Actively sought and incorporated learner feedback to continuously improve engagement strategies and event relevance.</li>
+                </ul>
+
+
+                <h4 class="font-semibold text-gray-800 text-xl mb-4">Results/Impact:</h4>
+                <ul class="list-disc list-inside text-gray-700 ml-6 mb-6 text-base space-y-2">
+                    <li>Contributed significantly to the successful graduation of **12,000+ learners in Abuja and 76,000+ nationwide**.</li>
+                    <li>**Increased learner engagement and participation** across all hubs through well-coordinated events.</li>
+                    <li>**Boosted overall community engagement by 25%** through targeted feedback mechanisms and consistent, active management.</li>
+                </ul>
+
+
+                <p class="text-gray-600 mb-6 text-base">**Tools Used:** WhatsApp, Telegram, Calendly, Trello, Google Workspace (Docs, Sheets, Forms).</p>
+
+
+                <div class="graphics-spot">
+                    <p>
+                        **Graphics Spot: Community Management & Event Coordination Visuals**<br>
+                        *Replace this with actual screenshots (redacted for privacy), flowcharts, or diagrams demonstrating your work.*<br>
+                        Example: <img src="https://placehold.co/600x300/e0e7ff/4338ca?text=Communication+Template" alt="Communication Template Example" class="placeholder-image">
+                        <img src="https://placehold.co/600x300/e0e7ff/4338ca?text=Event+Workflow+Diagram" alt="Event Workflow Diagram" class="placeholder-image">
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Project 2: Financial Record Management & Reconciliation -->
+            <div class="mb-16 pb-16 border-b border-gray-200/70 last:border-b-0">
+                <h3 class="text-2xl sm:text-3xl font-bold text-indigo-700 mb-5">Project 2: Financial Record Management & Reconciliation</h3>
+                <p class="text-gray-600 mb-4 text-lg">**Role:** Accountant & Administrative Support at RMS Ventures, Abuja</p>
+                <p class="text-gray-700 mb-6 text-lg">**Challenge/Context:** To maintain highly accurate financial records, manage active client ledgers, and ensure robust reconciliation processes to prevent discrepancies and support audit readiness.</p>
+
+
+                <h4 class="font-semibold text-gray-800 text-xl mb-4">Actions Taken:</h4>
+                <ul class="list-disc list-inside text-gray-700 ml-6 mb-6 text-base space-y-2">
+                    <li>Implemented and maintained a meticulous system for recording all financial transactions, including invoicing and expense tracking.</li>
+                    <li>Managed and reconciled over 70 active client ledgers using Tally Prime, ensuring all entries were accurate and up-to-date.</li>
+                    <li>Developed and followed a rigorous reconciliation checklist for monthly and quarterly financial reviews, identifying and resolving discrepancies proactively.</li>
+                    <li>Collaborated closely with the operations team to ensure seamless information flow, improving data input quality and financial reporting accuracy.</li>
+                </ul>
+
+
+                <h4 class="font-semibold text-gray-800 text-xl mb-4">Results/Impact:</h4>
+                <ul class="list-disc list-inside text-gray-700 ml-6 mb-6 text-base space-y-2">
+                    <li>Consistently maintained financial records with **98% reconciliation accuracy**, resulting in **no audit flags** during reviews.</li>
+                    <li>Ensured timely and accurate financial reporting, which improved communication and alignment between finance and operations.</li>
+                </ul>
+
+
+                <p class="text-gray-600 mb-6 text-base">**Tools Used:** Tally Prime, Microsoft Excel.</p>
+
+
+                <div class="graphics-spot">
+                    <p>
+                        **Graphics Spot: Financial Records & Reconciliation Visuals**<br>
+                        *Replace this with actual screenshots (redacted for privacy), or diagrams demonstrating your work.*<br>
+                        Example: <img src="https://placehold.co/600x300/e0e7ff/4338ca?text=Reconciliation+Report+Snippet" alt="Reconciliation Report Snippet" class="placeholder-image">
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Project 3: Data Collection & Quality Assurance for State Census -->
+            <div class="mb-16 pb-16 border-b border-gray-200/70 last:border-b-0">
+                <h3 class="text-2xl sm:text-3xl font-bold text-indigo-700 mb-5">Project 3: Data Collection & Quality Assurance for State Census</h3>
+                <p class="text-gray-600 mb-4 text-lg">**Role:** Personal Assistant (Intern) at Kaduna State Bureau of Statistics</p>
+                <p class="text-gray-700 mb-6 text-lg">**Challenge/Context:** To ensure high data accuracy and efficient collection during the Kaduna State Annual Schools Census, requiring effective team supervision and robust data validation.</p>
+
+
+                <h4 class="font-semibold text-gray-800 text-xl mb-4">Actions Taken:</h4>
+                <ul class="list-disc list-inside text-gray-700 ml-6 mb-6 text-base space-y-2">
+                    <li>Supervised a team of 3 interns, providing guidance and oversight during the data collection phase of the census.</li>
+                    <li>Designed and implemented data collection protocols to minimize errors and ensure consistency across all collected information.</li>
+                    <li>Conducted rigorous data cleaning, validation, and analysis using SPSS and Excel, identifying and correcting inconsistencies.</li>
+                    <li>Assisted in delivering training sessions on statistical tools and data management techniques to I.T. students, fostering best practices.</li>
+                </ul>
+
+
+                <h4 class="font-semibold text-gray-800 text-xl mb-4">Results/Impact:</h4>
+                <ul class="list-disc list-inside text-gray-700 ml-6 mb-6 text-base space-y-2">
+                    <li>Achieved an impressive **95% data accuracy** rate for the Kaduna State Annual Schools Census, contributing to reliable statistical reporting.</li>
+                    <li>Enhanced the overall quality and integrity of the census data, providing a solid foundation for comprehensive statistical analysis.</li>
+                </ul>
+
+
+                <p class="text-gray-600 mb-6 text-base">**Tools Used:** SPSS, Microsoft Excel.</p>
+
+
+                <div class="graphics-spot">
+                    <p>
+                        **Graphics Spot: Data Collection & QA Visuals**<br>
+                        *Replace this with actual screenshots (redacted for privacy), flowcharts, or diagrams demonstrating your work.*<br>
+                        Example: <img src="https://placehold.co/600x300/e0e7ff/4338ca?text=Data+Validation+Report" alt="Data Validation Report" class="placeholder-image">
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Testimonials Section (Optional) -->
+        <section id="testimonials" class="mb-20 p-10 bg-white card">
+            <h2 class="section-title">Testimonials & Recommendations</h2>
+            <div class="bg-gray-100 p-8 rounded-lg text-gray-700 italic shadow-inner mb-8 border border-gray-200/70 relative">
+                <i class="fas fa-quote-left text-indigo-300 text-4xl absolute top-4 left-6 opacity-60"></i>
+                <p class="mb-4 text-lg sm:text-xl pl-12">
+                    "Amos consistently demonstrated exceptional organizational skills and reliability. His proactive approach to managing communications and resolving queries was instrumental in our team's efficiency. He is a true asset to any operation."
+                </p>
+                <p class="text-right font-medium text-indigo-700 text-lg">— [Name of Supervisor/Colleague], [Title], [Organization]</p>
+            </div>
+            <div class="bg-gray-100 p-8 rounded-lg text-gray-700 italic shadow-inner border border-gray-200/70 relative">
+                <i class="fas fa-quote-left text-indigo-300 text-4xl absolute top-4 left-6 opacity-60"></i>
+                <p class="mb-4 text-lg sm:text-xl pl-12">
+                    "I was particularly impressed with Amos's ability to streamline our reporting processes, which significantly reduced compilation time. His attention to detail and proficiency with data tools made a tangible impact on our data accuracy."
+                </p>
+                <p class="text-right font-medium text-indigo-700 text-lg">— [Name of Supervisor/Colleague], [Title], [Organization]</p>
+            </div>
+        </section>
+
+
+        <!-- Contact Me Section -->
+        <section id="contact" class="mb-20 p-10 bg-white card text-center">
+            <h2 class="section-title">Contact Me</h2>
+            <p class="text-gray-700 text-lg sm:text-xl mb-10">I am always open to new opportunities and collaborations. Feel free to reach out!</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-12 text-gray-700 text-xl">
+                <span class="flex items-center text-indigo-700 font-medium">
+                    <i class="fas fa-phone-alt text-indigo-600 mr-4 text-2xl"></i>
+                    +234 708 643 4361
+                </span>
+                <span class="flex items-center text-indigo-700 font-medium">
+                    <i class="fas fa-envelope text-indigo-600 mr-4 text-2xl"></i>
+                    amosbako24@gmail.com
+                </span>
+                <a href="https://linkedin.com/in/amosbako" target="_blank" rel="noopener noreferrer" class="flex items-center text-indigo-600 hover:text-indigo-800 font-semibold transition duration-300 transform hover:scale-105">
+                    <i class="fab fa-linkedin text-indigo-600 mr-4 text-3xl"></i>
+                    Connect on LinkedIn
+                </a>
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600 text-sm mt-16 pb-8">
+            &copy; 2025 Amos Bako. All rights reserved. Designed with <span class="text-red-500">&hearts;</span> and Tailwind CSS.
+        </footer>
+
+
+    </div>
+
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top">
+        <i class="fas fa-arrow-up text-2xl"></i>
+    </button>
+
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+
+        // Show/hide back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
